@@ -1,0 +1,68 @@
+import React, {Component} from 'react';
+import '../Perfil.css';
+
+class PerfilPage extends Component {
+  constructor(props) {
+    super(props);
+    console.log('prefilprops', props)
+    
+  }
+
+  componentWillMount() {
+  
+    let perfil ={}
+    fetch('https://jsonplaceholder.typicode.com/users/'+this.props.match.params.id)
+      .then(response => response.json())
+      .then(
+      (result) => {
+        console.log('resultado', cosa)
+        perfil = result;
+        console.log(perfil.name)
+      },
+      (error) => {
+        console.log('error en request:',error)
+       
+      }
+    )
+
+  }
+
+  render() {
+    return (
+    
+      <section className="profile">
+        <div className="flex-container container-fluid">
+        <div className="flex-item">
+          <aside className="sidebar">
+            <ul className="list">
+              <li>
+                <div className="user-info">
+                  <div className="image-info">
+                    <a href=""><img src="" alt="{'user id'}"/></a>
+                    <span className="online-status online"></span>
+                  </div>
+                  <div className="detail-info">
+                    <h4>Nombre</h4>
+                    <p></p>
+                  </div>
+                  <div>
+                    <h5>{'user email'}</h5>
+                    <a>{'user website'}</a>
+                    <a href="tel:1-562-867-5309">{'telephone user'}</a>
+                    <address>{'user address'}</address>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+        <div className="flex-item">{'mis posts'}</div>
+        </div>
+      </section>
+    )
+
+  }
+}
+
+export default PerfilPage;
+
