@@ -18,7 +18,7 @@ ReactDOM.render((
   <BrowserRouter>
   <header>
     <Route component={Menu}/>
-    <Route exact path="/" component= {Registro} />
+    <Route exact path="/" component= {App} />
     <Route exact path="/home" component= {Home} />
     <Route path="/registro" component = {Registro} />
     <Route path="/login" component = {Login} />

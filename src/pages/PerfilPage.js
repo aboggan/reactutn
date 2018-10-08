@@ -1,47 +1,26 @@
 import React, {Component} from 'react';
 import '../Perfil.css';
+import * as firebase from 'firebase'
 
 class PerfilPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      perfil: {name: "",
-              email: "",
-              address:""}
+      perfil: {}
     }
   }
 
   componentWillMount() {
-  
-    fetch('https://jsonplaceholder.typicode.com/users/'+this.props.match.params.id)
-      .then(response => response.json())
-      .then(
-      (result) => {
-        console.log('resultado', result)
-        this.setState({
-          
-          perfil:{
-            name: result.name,
-            email: result.email,
-            address: result.address.street + " " +result.address.suite
-          },
+    const nameRef = firebase.database().ref('usuarios').child(this.props.match.params.id)
 
-        })
-      },
-      (error) => {
-        console.log('error en request:',error)
-       
-      }
-    )
-
+    nameRef.once('value').then(snapshot => {
+      //seteo el estado con el perfil
+      this.setState({perfil: snapshot.val()})
+    })
   }
 
   render() {
     
-    const perfil = this.state.perfil
-    console.log(perfil.address)
-    const address = perfil.address
-    console.log(address);
     return (
     
       <section className="profile">
@@ -50,13 +29,13 @@ class PerfilPage extends Component {
               <li>
                   <div className="detail-info">
                     <h4>Nombre</h4>
-                    <div>{perfil.name}</div>
+                    <div>{this.state.perfil.nombre}</div>
                   </div>
                 </li>
                 <li>
                   <div className="detail-info">
                     <h4>Email</h4>
-                    <div>{perfil.address}</div>
+                    <div>{this.state.perfil.email}</div>
                   </div>
                 </li>
             </ul>

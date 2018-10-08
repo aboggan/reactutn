@@ -27,6 +27,7 @@ class Home extends Component {
     console.log(name)
   }
   render() {
+    
       return (
         <div className="flex-container bg-color">
             <div className="flex-item">
