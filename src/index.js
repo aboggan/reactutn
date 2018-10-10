@@ -19,7 +19,7 @@ ReactDOM.render((
   <header>
     <Route component={Menu}/>
     <Route exact path="/" component= {App} />
-    <Route exact path="/home" component= {Home} />
+    <Route exact path="/home" component= {App} />
     <Route path="/registro" component = {Registro} />
     <Route path="/login" component = {Login} />
     <Route path="/perfilPage/:id" component = {PerfilPage} />

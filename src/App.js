@@ -82,12 +82,8 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-           
+          
           <Perfiles usuarios = {this.state.usuarios}/> 
-
-        </div>
-        <div className="container-fluid">
-        <Registro agregarUsuario = {this.handleFormSubmit} />
 
         </div>
 

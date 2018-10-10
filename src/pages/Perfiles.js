@@ -15,6 +15,7 @@ class Perfiles extends Component {
     
       return (
         <section className="profile">
+        <h1>Usuarios registrados</h1>
           {this.props.usuarios.map(
             perfil =>
             <Perfil perfil = {perfil.data} uid= {perfil.id} key ={perfil.id}/>)
